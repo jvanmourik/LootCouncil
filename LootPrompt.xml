@@ -1,0 +1,92 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\..\FrameXML\UI.xsd">
+  <Script file="LootPrompt.lua"/>
+
+  <Frame name="LootPrompt" frameStrata="DIALOG" parent="UIParent" movable="false" hidden="true" mixin="LootPromptMixin">
+    <Size x="256" y="128"/>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Layers>
+      <Layer level="BACKGROUND">
+        <Texture parentKey="Background" file="Interface\AchievementFrame\UI-GuildAchievement-Parchment" horizTile="true" vertTile="true">
+          <Anchors>
+						<Anchor point="TOPLEFT" x="3" y="-4"/>
+						<Anchor point="BOTTOMRIGHT" x="-3" y="2"/>
+					</Anchors>
+				</Texture>
+      </Layer>
+      <Layer level="BORDER">
+        <Texture parentKey="TopLeft" atlas="battlefieldminimap-border-topleft" useAtlasSize="true">
+          <Anchors>
+            <Anchor point="TOPLEFT" x="-7" y="6"/>
+          </Anchors>
+        </Texture>
+        <Texture parentKey="TopRight" atlas="battlefieldminimap-border-topright" useAtlasSize="true">
+          <Anchors>
+            <Anchor point="TOPRIGHT" x="6" y="6"/>
+          </Anchors>
+        </Texture>
+        <Texture parentKey="BottomLeft" atlas="battlefieldminimap-border-bottomleft" useAtlasSize="true">
+          <Anchors>
+            <Anchor point="BOTTOMLEFT" x="-7" y="-7"/>
+          </Anchors>
+        </Texture>
+        <Texture parentKey="BottomRight" atlas="battlefieldminimap-border-bottomright" useAtlasSize="true">
+          <Anchors>
+            <Anchor point="BOTTOMRIGHT" x="6" y="-7"/>
+          </Anchors>
+        </Texture>
+        <Texture parentKey="Top" atlas="battlefieldminimap-border-top">
+          <Anchors>
+            <Anchor point="TOPLEFT" relativeKey="$parent.TopLeft" relativePoint="TOPRIGHT"/>
+            <Anchor point="BOTTOMRIGHT" relativeKey="$parent.TopRight" relativePoint="BOTTOMLEFT"/>
+          </Anchors>
+        </Texture>
+        <Texture parentKey="Bottom" atlas="battlefieldminimap-border-bottom">
+          <Anchors>
+            <Anchor point="TOPLEFT" relativeKey="$parent.BottomLeft" relativePoint="TOPRIGHT"/>
+            <Anchor point="BOTTOMRIGHT" relativeKey="$parent.BottomRight" relativePoint="BOTTOMLEFT"/>
+          </Anchors>
+        </Texture>
+        <Texture parentKey="Left" atlas="battlefieldminimap-border-left">
+          <Anchors>
+            <Anchor point="TOPLEFT" relativeKey="$parent.TopLeft" relativePoint="BOTTOMLEFT"/>
+            <Anchor point="BOTTOMRIGHT" relativeKey="$parent.BottomLeft" relativePoint="TOPRIGHT"/>
+          </Anchors>
+        </Texture>
+        <Texture parentKey="Right" atlas="battlefieldminimap-border-right">
+          <Anchors>
+            <Anchor point="TOPLEFT" relativeKey="$parent.TopRight" relativePoint="BOTTOMLEFT"/>
+            <Anchor point="BOTTOMRIGHT" relativeKey="$parent.BottomRight" relativePoint="TOPRIGHT"/>
+          </Anchors>
+        </Texture>
+      </Layer>
+    </Layers>
+    <Frames>
+      <Button name="NeedButton" text="Need" inherits="UIPanelButtonTemplate" mixin="NeedButtonMixin">
+        <Size x="95" y="22"/>
+        <Anchors>
+          <Anchor point="BOTTOM" x="-48" y="10"/>
+        </Anchors>
+        <Scripts>
+          <OnClick method="OnClick"/>
+        </Scripts>
+      </Button>
+      <Button name="GreedButton" text="Greed" inherits="UIPanelButtonTemplate" mixin="GreedButtonMixin">
+        <Size x="95" y="22"/>
+        <Anchors>
+          <Anchor point="BOTTOM" x="48" y="10"/>
+        </Anchors>
+        <Scripts>
+          <OnClick method="OnClick"/>
+        </Scripts>
+      </Button>
+    </Frames>
+		<Scripts>
+      <OnLoad method="OnLoad"/>
+      <OnShow method="OnShow"/>
+			<OnHide method="OnHide"/>
+		</Scripts>
+	</Frame>
+</Ui>
